@@ -1,18 +1,29 @@
 .logo {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-3);
 }
 
-.lockup {
-  display: block;
-  width: auto;
-  height: 3rem;
-}
-
+/* The mark stands taller than the name block so neither looks squashed */
 .mark {
   display: block;
   width: auto;
-  height: 2.5rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+}
+
+.name {
+  display: block;
+  width: auto;
+  height: 1.5rem;
+}
+
+.light .mark {
+  height: 3.25rem;
+}
+
+.light .name {
+  height: 2.125rem;
 }
 
 .orange {
@@ -26,8 +37,4 @@
 /* On dark backgrounds the navy parts switch to cream so they stay visible */
 .light .navy {
   fill: var(--color-cream);
-}
-
-.light .lockup {
-  height: 3.5rem;
 }
