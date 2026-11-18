@@ -212,6 +212,9 @@
   --space-section: clamp(4rem, 2.8rem + 5.5vw, 8rem);
   --space-section-sm: clamp(3rem, 2.2rem + 3.5vw, 5rem);
   --space-gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  /* Extra side inset shared by the header, announcement bar and home hero
+     so their edges line up: ~8px on phones, up to 80px on wide screens */
+  --space-page-inset: clamp(0.5rem, -1rem + 6vw, 5rem);
   --container-max: 75rem; /* 1200px */
   --container-wide: 87.5rem; /* 1400px */
   --container-narrow: 48rem; /* 768px */

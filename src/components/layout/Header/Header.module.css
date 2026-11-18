@@ -19,10 +19,12 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  max-width: var(--container-wide);
+  /* same width rule as <Container size="wide"> so the edges match the hero */
+  max-width: calc(var(--container-wide) + var(--space-gutter) * 2);
   height: var(--header-height);
   margin-inline: auto;
-  padding-inline: var(--space-gutter);
+  /* same left/right edges as the home hero */
+  padding-inline: calc(var(--space-gutter) + var(--space-page-inset));
   background: var(--color-surface);
 }
 
@@ -184,11 +186,14 @@
 }
 
 @media (min-width: 1280px) {
-  .secondaryCta {
-    display: inline-flex;
-  }
-
   .links {
     gap: var(--space-4);
+  }
+}
+
+/* The second button only appears once there is room for it beside the nav */
+@media (min-width: 1366px) {
+  .secondaryCta {
+    display: inline-flex;
   }
 }

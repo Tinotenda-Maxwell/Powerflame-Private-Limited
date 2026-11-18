@@ -102,7 +102,6 @@ export const mainNav: NavLink[] = [
   { label: 'Services', href: '/services' },
   { label: 'Industries', href: '/industries' },
   { label: 'Gas safety', href: '/gas-safety' },
-  { label: 'Articles', href: '/articles' },
   { label: 'FAQ', href: '/faq' },
 ];
 

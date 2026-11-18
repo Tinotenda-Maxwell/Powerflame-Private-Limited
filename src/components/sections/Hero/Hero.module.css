@@ -63,9 +63,9 @@
   align-items: center;
 }
 
-/* Extra side margin on top of the container gutter: ~8px on phones, up to 80px on desktop */
+/* Extra side inset, shared with the header so the edges line up */
 .hero .inner {
-  padding-inline: calc(var(--space-gutter) + clamp(0.5rem, -1rem + 6vw, 5rem));
+  padding-inline: calc(var(--space-gutter) + var(--space-page-inset));
 }
 
 .copy {
@@ -185,12 +185,6 @@
     white-space: nowrap;
   }
 
-  /* Sit the text column slightly above the photo's centre line
-     (from 1280px only: on smaller laptops it would slide under the header) */
-  .copy {
-    translate: 0 -1.5rem;
-  }
-
   /* Never squeeze the items (or their icons) to fit */
   .badges li {
     flex-shrink: 0;
@@ -200,6 +194,11 @@
 @media (min-width: 1024px) {
   .inner {
     grid-template-columns: 1fr 1.05fr;
+  }
+
+  /* Sit the text column slightly above the photo's centre line */
+  .copy {
+    translate: 0 -2.75rem;
   }
 
   /* Pointing pose: smaller, lifted, finger reaching left towards the headline */

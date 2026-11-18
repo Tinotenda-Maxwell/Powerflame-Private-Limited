@@ -10,10 +10,10 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  max-width: var(--container-wide);
+  max-width: calc(var(--container-wide) + var(--space-gutter) * 2);
   min-height: var(--announcement-height);
   margin-inline: auto;
-  padding: var(--space-2) var(--space-gutter);
+  padding: var(--space-2) calc(var(--space-gutter) + var(--space-page-inset));
 }
 
 .message {
