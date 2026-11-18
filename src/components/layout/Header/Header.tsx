@@ -116,13 +116,12 @@ export function Header() {
           <Button
             href={headerCtas.secondary.href}
             variant="outline"
-            size="sm"
             className={styles.secondaryCta}
           >
             {headerCtas.secondary.label}
           </Button>
           <MagneticButton>
-            <Button href={headerCtas.primary.href} size="sm" className={styles.primaryCta}>
+            <Button href={headerCtas.primary.href} className={styles.primaryCta}>
               {headerCtas.primary.label}
             </Button>
           </MagneticButton>

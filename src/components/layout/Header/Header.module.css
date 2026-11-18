@@ -2,8 +2,14 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  padding: var(--space-3) var(--space-gutter) 0;
-  pointer-events: none;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: box-shadow var(--duration-slow) var(--ease-out);
+}
+
+/* Once scrolled, a soft shadow separates the header from the page */
+.scrolled {
+  box-shadow: var(--shadow-md);
 }
 
 .bar {
@@ -16,41 +22,12 @@
   max-width: var(--container-wide);
   height: var(--header-height);
   margin-inline: auto;
-  padding: 0 var(--space-2) 0 var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
+  padding-inline: var(--space-gutter);
   background: var(--color-surface);
-  box-shadow: var(--shadow-sm);
-  pointer-events: auto;
-  transition:
-    box-shadow var(--duration-slow) var(--ease-out),
-    background-color var(--duration-slow) var(--ease-out),
-    transform var(--duration-slow) var(--ease-out);
 }
 
 .menuOpen {
   z-index: var(--z-menu);
-}
-
-.scrolled .bar {
-  box-shadow: var(--shadow-md);
-}
-
-/* Once scrolled, a strip behind the floating bar hides the page scrolling
-   underneath (including the gaps around the pill), then fades out below it
-   so there is no hard edge */
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 calc(var(--space-8) * -1);
-  z-index: -1;
-  background: var(--gradient-header-fade);
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.scrolled::before {
-  opacity: 1;
 }
 
 .logoLink {
@@ -81,8 +58,8 @@
   align-items: center;
   min-height: var(--tap-target);
   padding: 0 var(--space-3);
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
+  color: var(--color-text);
+  font-size: var(--text-base);
   font-weight: var(--weight-medium);
   text-decoration: none;
   white-space: nowrap;
@@ -91,7 +68,7 @@
 
 .link:hover,
 .active {
-  color: var(--color-text);
+  color: var(--color-primary-ink);
 }
 
 .active {
@@ -117,7 +94,7 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .secondaryCta,
@@ -212,6 +189,6 @@
   }
 
   .links {
-    gap: var(--space-2);
+    gap: var(--space-4);
   }
 }

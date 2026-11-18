@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { absoluteUrl, site } from '@/config/site';
 import { MotionProvider } from '@/components/animation/MotionProvider';
 import { Footer } from '@/components/layout/Footer';
+import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
 import { Header } from '@/components/layout/Header';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <JsonLd data={graph(organizationJsonLd(), localBusinessJsonLd())} />
         <SkipLink />
         <MotionProvider>
+          <AnnouncementBar />
           <Header />
           <main id="main" tabIndex={-1}>
             {children}

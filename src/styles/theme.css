@@ -141,13 +141,12 @@
     color-mix(in srgb, var(--color-cream) 88%, transparent) 70%,
     var(--color-cream) 100%
   );
-  /* Behind the sticky header: solid page background, fading out over the
-     last 2rem so scrolled content dissolves instead of meeting a hard edge */
-  --gradient-header-fade: linear-gradient(
-    180deg,
-    var(--color-bg) 0%,
-    var(--color-bg) calc(100% - 2rem),
-    color-mix(in srgb, var(--color-bg) 0%, transparent) 100%
+  /* Announcement bar above the header: deep navy with a faint warm edge */
+  --gradient-announcement: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-dark) 72%, #000) 0%,
+    var(--color-dark) 55%,
+    color-mix(in srgb, var(--color-dark) 82%, var(--color-primary)) 100%
   );
   --gradient-dark-fade: linear-gradient(
     180deg,
@@ -216,7 +215,8 @@
   --container-max: 75rem; /* 1200px */
   --container-wide: 87.5rem; /* 1400px */
   --container-narrow: 48rem; /* 768px */
-  --header-height: 4.5rem;
+  --header-height: 4.75rem;
+  --announcement-height: 2.75rem;
   --tap-target: 2.75rem; /* 44px minimum touch size */
 
   /* ---------------------------------------------------------------------------

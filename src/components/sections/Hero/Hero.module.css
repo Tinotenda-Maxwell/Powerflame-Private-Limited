@@ -1,8 +1,6 @@
 .hero {
   position: relative;
-  margin-top: calc(var(--header-height) * -1 - var(--space-3));
-  padding: calc(var(--header-height) + clamp(3rem, 2rem + 4vw, 6rem)) 0
-    clamp(3rem, 2rem + 4vw, 6rem);
+  padding: clamp(3rem, 2rem + 4vw, 6rem) 0 clamp(3rem, 2rem + 4vw, 6rem);
   overflow: hidden;
   isolation: isolate;
 }

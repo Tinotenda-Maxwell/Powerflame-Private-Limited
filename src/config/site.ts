@@ -106,6 +106,17 @@ export const mainNav: NavLink[] = [
   { label: 'FAQ', href: '/faq' },
 ];
 
+/** Slim bar above the header on every page. Edit the wording here. */
+export const announcement = {
+  message: 'Running low on gas? Get an accurately weighed LPG refill in Hatfield, Harare.',
+  /** Shorter wording for phones */
+  shortMessage: 'Running low on gas?',
+  linkLabel: 'Order a refill',
+  /** Pre-filled WhatsApp message for the link */
+  whatsappMessage: "Hi Powerflame, I'd like to order a gas refill.",
+  chatLabel: 'Chat with us',
+} as const;
+
 export const headerCtas = {
   secondary: { label: 'Our services', href: '/services' },
   primary: { label: 'Get in touch', href: '/contact' },
