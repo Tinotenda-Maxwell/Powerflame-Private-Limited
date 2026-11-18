@@ -1,0 +1,25 @@
+.typewriter {
+  white-space: nowrap;
+}
+
+/* Thin blinking caret that inherits the text colour */
+.cursor {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.85em;
+  margin-left: 0.06em;
+  vertical-align: -0.04em;
+  border-radius: 1px;
+  background: currentColor;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}

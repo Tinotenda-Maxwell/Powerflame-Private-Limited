@@ -4,6 +4,7 @@ import { headerCtas } from '@/config/site';
 import { homeContent } from '@/content/home';
 import { images } from '@/content/images';
 import { MagneticButton } from '@/components/animation/MagneticButton';
+import { Typewriter } from '@/components/animation/Typewriter';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { Pill } from '@/components/ui/Pill';
@@ -51,8 +52,20 @@ export function Hero() {
         <div className={styles.copy}>
           <Pill className={styles.pill}>{hero.eyebrow}</Pill>
           <h1 id="hero-title" className={styles.title}>
-            {before.map((w) => word(w))}
-            {highlight.map((w) => word(w, true))}
+            {/* Screen readers and search engines get one plain sentence */}
+            <span className="sr-only">
+              {hero.before} {hero.highlight} {hero.rotating[0]}
+            </span>
+            <span aria-hidden="true">
+              <span className={styles.line}>{before.map((w) => word(w))}</span>
+              {highlight.map((w) => word(w, true))}
+              <span
+                className={`${styles.word} ${styles.highlight}`}
+                style={{ '--i': wordIndex } as CSSProperties}
+              >
+                <Typewriter words={hero.rotating} />
+              </span>
+            </span>
           </h1>
           <p className={styles.intro}>{hero.intro}</p>
           <div className={styles.actions}>

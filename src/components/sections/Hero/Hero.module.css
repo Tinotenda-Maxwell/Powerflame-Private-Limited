@@ -87,7 +87,12 @@
   font-weight: var(--weight-black);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  max-width: 13ch;
+}
+
+/* "Clean Energy For" always stays on one line; "Every …" goes on the next */
+.line {
+  display: block;
+  white-space: nowrap;
 }
 
 .word {

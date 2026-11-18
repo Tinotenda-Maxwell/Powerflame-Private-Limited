@@ -5,9 +5,11 @@ export const homeContent = {
   hero: {
     eyebrow: 'LPG gas Harare · Hatfield',
     /** The headline is split into words for the reveal animation.
-        Words inside `highlight` are shown in the primary colour. */
+        `highlight` and the typed word are shown in the primary colour. */
     before: 'Clean Energy For',
-    highlight: 'Every Kitchen',
+    highlight: 'Every',
+    /** Typed one character at a time after `highlight`, in this order (the first shows on load) */
+    rotating: ['Kitchen', 'Home', 'Restaurant', 'Business', 'School'],
     intro:
       'Powerflame Energy is a proudly Zimbabwean LPG company in Hatfield, Harare. We supply accurately weighed gas refills, cylinders and accessories, and our trained technicians install and repair gas systems for homes and businesses.',
     badges: ['Accurately weighed refills', 'Safety-checked cylinders', 'Local Harare team'],
