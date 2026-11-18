@@ -82,8 +82,8 @@
 }
 
 .title {
-  /* 32px on phones → 56px on desktop */
-  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+  /* 30px on phones → 48px on desktop */
+  font-size: clamp(1.875rem, 1.35rem + 2.2vw, 3rem);
   font-weight: var(--weight-black);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
@@ -185,7 +185,7 @@
   /* Sit the text column slightly above the photo's centre line
      (from 1280px only: on smaller laptops it would slide under the header) */
   .copy {
-    translate: 0 -4.5rem;
+    translate: 0 -1.5rem;
   }
 
   /* Never squeeze the items (or their icons) to fit */
