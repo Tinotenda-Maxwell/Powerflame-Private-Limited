@@ -16,6 +16,7 @@
   display: block;
   width: auto;
   height: 1.5rem;
+  translate: 0 0.2875rem;
 }
 
 .light .mark {
@@ -23,7 +24,8 @@
 }
 
 .light .name {
-  height: 2.125rem;
+  height: 1.8125rem;
+  translate: 0 0.34rem;
 }
 
 .orange {
