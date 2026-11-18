@@ -2,6 +2,12 @@ import type { IconName } from '@/components/ui/Icon';
 
 export type { IconName };
 
+/** One entry in the scrolling product strip */
+export interface MarqueeItem {
+  label: string;
+  icon: IconName;
+}
+
 /** A named image slot. See public/images/README.md for sizes and search terms. */
 export interface ImageSlotData {
   /** Path inside /public, e.g. '/images/hero/family-cooking.webp' */

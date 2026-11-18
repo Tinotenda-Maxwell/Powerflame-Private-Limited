@@ -5,7 +5,7 @@ import { FeatureGrid } from '@/components/sections/FeatureGrid';
 import { Hero } from '@/components/sections/Hero';
 import { IndustriesGrid } from '@/components/sections/IndustriesGrid';
 import { ArticleGrid } from '@/components/sections/LatestArticles';
-import { Marquee } from '@/components/sections/Marquee';
+import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { SafetyTeaser } from '@/components/sections/SafetyTeaser';
 import { ServicesGrid } from '@/components/sections/ServicesGrid';
 import { Button } from '@/components/ui/Button';
@@ -32,7 +32,7 @@ export default function HomePage() {
     <>
       <JsonLd data={graph(websiteJsonLd())} />
       <Hero />
-      <Marquee items={homeContent.marquee} label="Products and services we offer" />
+      <ProductShowcase />
       <AboutTeaser />
 
       <Section tone="surface" grid labelledBy="services-title">

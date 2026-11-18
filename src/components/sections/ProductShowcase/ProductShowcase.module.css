@@ -1,0 +1,200 @@
+/* Light, warm section so the white product cards stand out */
+.showcase {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-section-sm);
+  border-block: 1px solid var(--color-border);
+  background: var(--color-surface-warm);
+  color: var(--color-text);
+  isolation: isolate;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  background-image:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 40%, var(--color-dark) 0%, transparent 75%);
+}
+
+/* Header lines up with the hero and header edges */
+.header {
+  max-width: calc(var(--container-wide) + var(--space-gutter) * 2);
+  margin: 0 auto var(--space-10);
+  padding-inline: calc(var(--space-gutter) + var(--space-page-inset));
+}
+
+/* Cards fade out at both edges */
+.viewport {
+  overflow: hidden;
+  padding-block: var(--space-2) var(--space-4);
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-dark) 6%,
+    var(--color-dark) 94%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 70s linear infinite;
+}
+
+.viewport:hover .track,
+.viewport:focus-within .track {
+  animation-play-state: paused;
+}
+
+.list {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-5);
+  padding: 0 var(--space-5) 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ---- Card ---- */
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 15.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary-tint-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 0.85;
+  overflow: hidden;
+  background: var(--color-primary-tint);
+  isolation: isolate;
+}
+
+/* Warm glow behind each product */
+.glow {
+  position: absolute;
+  inset: 15%;
+  z-index: var(--z-below);
+  border-radius: var(--radius-circle);
+  background: var(--gradient-glow-amber);
+  filter: blur(18px);
+  opacity: 0.8;
+}
+
+.image {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.card:hover .image {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+/* Shown until the product photo is added */
+.placeholder {
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 1px solid var(--color-primary-tint-strong);
+  border-radius: var(--radius-circle);
+  background: var(--color-surface);
+  color: var(--color-primary-ink);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-slow) var(--ease-spring);
+}
+
+.card:hover .placeholder {
+  transform: scale(1.08);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.name {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-snug);
+  line-height: var(--leading-snug);
+}
+
+.detail {
+  flex: 1;
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-muted);
+}
+
+.enquire {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--tap-target);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-ink);
+  text-decoration: none;
+  transition: gap var(--duration-base) var(--ease-out);
+}
+
+.enquire:hover {
+  gap: var(--space-2);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.enquire:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+/* Reduced motion: no sliding; a row people can swipe/scroll instead */
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    overflow-x: auto;
+    mask-image: none;
+    padding-inline: calc(var(--space-gutter) + var(--space-page-inset));
+  }
+
+  .track {
+    animation: none;
+  }
+
+  .list[aria-hidden='true'] {
+    display: none;
+  }
+}

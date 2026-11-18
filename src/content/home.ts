@@ -1,4 +1,4 @@
-import type { Benefit, Step } from '@/types';
+import type { Benefit, MarqueeItem, Step } from '@/types';
 
 /** HOME PAGE COPY */
 export const homeContent = {
@@ -15,20 +15,21 @@ export const homeContent = {
     badges: ['Accurately weighed refills', 'Safety-checked cylinders', 'Local Harare team'],
   },
 
+  /** Scrolling strip under the hero: each item gets its own icon (names from components/ui/Icon) */
   marquee: [
-    '9kg cylinders',
-    '14kg cylinders',
-    '19kg cylinders',
-    '48kg cylinders',
-    'Regulators',
-    'Hoses',
-    'Burners',
-    'Gas stoves',
-    'Leak detectors',
-    'Fire extinguishers',
-    'Installation',
-    'Repairs',
-  ],
+    { label: '9kg cylinders', icon: 'cylinder' },
+    { label: '14kg cylinders', icon: 'cylinder' },
+    { label: '19kg cylinders', icon: 'cylinder' },
+    { label: '48kg cylinders', icon: 'cylinder' },
+    { label: 'Regulators', icon: 'gauge' },
+    { label: 'Hoses', icon: 'cable' },
+    { label: 'Burners', icon: 'flame' },
+    { label: 'Gas stoves', icon: 'cooking-pot' },
+    { label: 'Leak detectors', icon: 'radar' },
+    { label: 'Fire extinguishers', icon: 'fire-extinguisher' },
+    { label: 'Installation', icon: 'drill' },
+    { label: 'Repairs', icon: 'wrench' },
+  ] satisfies MarqueeItem[],
 
   about: {
     eyebrow: 'Who we are',

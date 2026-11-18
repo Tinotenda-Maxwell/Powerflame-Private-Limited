@@ -1,14 +1,33 @@
+/* Navy band: the same deep navy as the announcement bar */
 .marquee {
   position: relative;
   overflow: hidden;
-  padding-block: var(--space-5);
-  border-block: 1px solid var(--color-border);
-  background: var(--color-surface);
+  padding-block: var(--space-6);
+  background: var(--gradient-announcement);
+  color: var(--color-text-inverse);
+  isolation: isolate;
+}
+
+/* Faint grid, as on the hero, so the band feels part of the same system */
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  background-image:
+    linear-gradient(var(--color-grid-line-inverse) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line-inverse) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 50% 50%, var(--color-dark) 0%, transparent 75%);
+}
+
+/* Items fade out at both edges; the band itself stays solid */
+.viewport {
+  overflow: hidden;
   mask-image: linear-gradient(
     90deg,
     transparent,
-    var(--color-dark) 8%,
-    var(--color-dark) 92%,
+    var(--color-dark) 7%,
+    var(--color-dark) 93%,
     transparent
   );
 }
@@ -26,22 +45,57 @@
 .list {
   display: flex;
   flex-shrink: 0;
+  align-items: center;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
 .item {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  padding-inline: var(--space-6);
-  font-size: var(--text-xl);
-  font-weight: var(--weight-bold);
+  padding-inline: var(--space-8);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-snug);
   white-space: nowrap;
 }
 
-.icon {
-  color: var(--color-primary-ink);
+/* Small orange diamond between items */
+.item::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.8;
+}
+
+/* Orange icon in a soft round chip */
+.chip {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+  border-radius: var(--radius-circle);
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+  .marquee {
+    padding-block: var(--space-8);
+  }
+
+  .item {
+    padding-inline: var(--space-10);
+    font-size: var(--text-xl);
+  }
 }
