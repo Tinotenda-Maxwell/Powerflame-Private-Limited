@@ -65,6 +65,11 @@
   align-items: center;
 }
 
+/* Extra side margin on top of the container gutter: ~8px on phones, up to 80px on desktop */
+.hero .inner {
+  padding-inline: calc(var(--space-gutter) + clamp(0.5rem, -1rem + 6vw, 5rem));
+}
+
 .copy {
   display: flex;
   flex-direction: column;
@@ -77,7 +82,8 @@
 }
 
 .title {
-  font-size: var(--text-5xl);
+  /* 32px on phones → 56px on desktop */
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
   font-weight: var(--weight-black);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
@@ -104,16 +110,17 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
   animation: fade-up var(--duration-slower) var(--ease-out) 0.6s backwards;
 }
 
 .badges {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5);
+  gap: var(--space-3) var(--space-5);
   padding: 0;
-  margin: 0;
+  margin: var(--space-4) 0 0;
   list-style: none;
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
@@ -127,6 +134,7 @@
 }
 
 .badges svg {
+  flex-shrink: 0;
   color: var(--color-primary-ink);
 }
 
@@ -156,7 +164,6 @@
   object-fit: contain;
   /* The photo is cut off straight across the arms: fade that edge into the page */
   mask-image: linear-gradient(180deg, var(--color-dark) 82%, transparent 100%);
-  filter: drop-shadow(0 18px 30px color-mix(in srgb, var(--color-dark) 35%, transparent));
   transform-origin: 50% 100%;
   animation: person-rise 1.2s var(--ease-out) 0.35s backwards;
 }
@@ -168,8 +175,46 @@
   }
 }
 
+/* Keep the three checks on one row wherever there is room for them */
+@media (min-width: 1280px) {
+  .badges {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  /* Sit the text column slightly above the photo's centre line
+     (from 1280px only: on smaller laptops it would slide under the header) */
+  .copy {
+    translate: 0 -4.5rem;
+  }
+
+  /* Never squeeze the items (or their icons) to fit */
+  .badges li {
+    flex-shrink: 0;
+  }
+}
+
 @media (min-width: 1024px) {
   .inner {
     grid-template-columns: 1fr 1.05fr;
+  }
+
+  /* Pointing pose: smaller, lifted, finger reaching left towards the headline */
+  .stage {
+    align-self: center;
+    max-width: none;
+    height: min(42vw, 36rem);
+    aspect-ratio: auto;
+    translate: 0 -1rem;
+  }
+
+  .person {
+    justify-content: flex-end;
+  }
+
+  .person img {
+    height: 100%;
+    /* soft cloudy fade over the cropped bottom, as on phones */
+    mask-image: linear-gradient(180deg, var(--color-dark) 78%, transparent 100%);
   }
 }

@@ -77,6 +77,13 @@ export function Hero() {
 
         <div className={styles.stage}>
           <picture className={styles.person}>
+            {/* Desktop: pointing pose; phones and tablets keep the crossed-arms pose */}
+            <source
+              media="(min-width: 1024px)"
+              srcSet={images.heroDesktop.src}
+              width={images.heroDesktop.width}
+              height={images.heroDesktop.height}
+            />
             <img
               src={images.heroMain.src}
               alt={images.heroMain.alt}

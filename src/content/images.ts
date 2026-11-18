@@ -11,10 +11,17 @@ import type { ImageSlotData } from '@/types';
 export const images = {
   heroMain: {
     src: '/images/hero/powerflame-team-member-cutout.webp',
-    alt: 'A smiling Powerflame team member in a navy branded polo shirt with his arms crossed',
+    alt: 'A smiling Powerflame team member in a navy branded polo shirt',
     width: 1312,
     height: 1199,
     placeholderLabel: 'Powerflame team',
+  },
+  /** Desktop hero (≥1024px): team member pointing towards the headline */
+  heroDesktop: {
+    src: '/images/hero/powerflame-team-member-pointing.webp',
+    alt: 'A smiling Powerflame team member in a navy branded polo shirt',
+    width: 1199,
+    height: 1250,
   },
   aboutStory: {
     src: '/images/about/powerflame-team-harare.webp',
