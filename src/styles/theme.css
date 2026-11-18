@@ -141,6 +141,14 @@
     color-mix(in srgb, var(--color-cream) 88%, transparent) 70%,
     var(--color-cream) 100%
   );
+  /* Behind the sticky header: solid page background, fading out over the
+     last 2rem so scrolled content dissolves instead of meeting a hard edge */
+  --gradient-header-fade: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    var(--color-bg) calc(100% - 2rem),
+    color-mix(in srgb, var(--color-bg) 0%, transparent) 100%
+  );
   --gradient-dark-fade: linear-gradient(
     180deg,
     transparent 0%,
