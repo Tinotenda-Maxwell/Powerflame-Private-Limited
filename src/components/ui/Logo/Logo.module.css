@@ -1,64 +1,33 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--color-text);
 }
 
-.light {
-  color: var(--color-text-inverse);
+.lockup {
+  display: block;
+  width: auto;
+  height: 3rem;
 }
 
 .mark {
+  display: block;
   width: auto;
-  height: 2.25rem;
-  flex-shrink: 0;
+  height: 2.5rem;
 }
 
-.stopStart {
-  stop-color: var(--color-primary);
+.orange {
+  fill: var(--color-primary);
 }
 
-.stopMid {
-  stop-color: var(--color-ember);
-}
-
-.stopEnd {
-  stop-color: var(--color-secondary);
-}
-
-.inner {
-  fill: var(--color-cream);
-}
-
-.light .inner {
+.navy {
   fill: var(--color-dark);
 }
 
-.wordmark {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
+/* On dark backgrounds the navy parts switch to cream so they stay visible */
+.light .navy {
+  fill: var(--color-cream);
 }
 
-.name {
-  font-family: var(--font-sans);
-  font-size: 1.125rem;
-  font-weight: var(--weight-black);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.sub {
-  margin-top: 0.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: var(--weight-medium);
-  letter-spacing: 0.52em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-.light .sub {
-  color: var(--color-secondary);
+.light .lockup {
+  height: 3.5rem;
 }

@@ -62,7 +62,7 @@
   font-weight: var(--weight-medium);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .list {
@@ -81,7 +81,7 @@
 .list svg {
   flex-shrink: 0;
   margin-top: 0.15rem;
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .recommended {

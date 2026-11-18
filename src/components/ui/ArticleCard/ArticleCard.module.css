@@ -92,7 +92,7 @@
 }
 
 .more {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
 }

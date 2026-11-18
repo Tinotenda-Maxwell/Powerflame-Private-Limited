@@ -65,7 +65,7 @@ export default function GasSafetyPage() {
                   <span className={styles.stepNumber} aria-hidden="true">
                     {index + 1}
                   </span>
-                  <IconBox icon={step.icon} tone="glass" />
+                  <IconBox icon={step.icon} tone="glass" className={styles.stepIcon} />
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepText}>{step.text}</p>
                 </Reveal>

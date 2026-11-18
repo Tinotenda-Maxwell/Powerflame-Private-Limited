@@ -91,7 +91,7 @@
 }
 
 .highlight {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .intro {
@@ -127,7 +127,7 @@
 }
 
 .badges svg {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 /* Flame stage card */

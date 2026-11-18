@@ -18,7 +18,7 @@ export function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <Link href="/" className={styles.logoLink}>
-              <Logo tone="light" id="footer" />
+              <Logo tone="light" />
             </Link>
             <p className={styles.tagline}>{site.tagline}</p>
             <p className={styles.areas}>

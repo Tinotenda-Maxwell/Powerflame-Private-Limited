@@ -22,7 +22,7 @@
 }
 
 .label span[aria-hidden] {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .optional {
@@ -68,7 +68,7 @@ textarea.input {
 }
 
 .error {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }

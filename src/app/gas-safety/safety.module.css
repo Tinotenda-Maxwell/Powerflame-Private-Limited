@@ -73,7 +73,11 @@
   font-family: var(--font-mono);
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
-  opacity: 0.6;
+}
+
+/* Navy icon on the orange panel (the default glass tone is amber, for navy panels) */
+.stepIcon {
+  color: var(--color-on-primary);
 }
 
 .stepTitle {
@@ -125,7 +129,7 @@
 }
 
 .numberLink strong {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   font-family: var(--font-mono);
 }
 
@@ -144,7 +148,7 @@
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .tocList {
@@ -163,7 +167,7 @@
 }
 
 .tocList a:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .content {
@@ -216,7 +220,7 @@
 .points svg {
   flex-shrink: 0;
   margin-top: 0.15rem;
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .more {
@@ -225,7 +229,7 @@
   gap: var(--space-2);
   align-self: flex-start;
   min-height: var(--tap-target);
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   font-weight: var(--weight-semibold);
   text-decoration: none;
 }

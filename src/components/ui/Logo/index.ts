@@ -1,1 +1,2 @@
-export { Logo, FLAME_OUTER, FLAME_INNER } from './Logo';
+export { Logo } from './Logo';
+export * from './paths';

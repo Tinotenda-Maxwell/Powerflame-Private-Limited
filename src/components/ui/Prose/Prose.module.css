@@ -34,7 +34,7 @@
 }
 
 .prose a {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   font-weight: var(--weight-medium);
   text-decoration: underline;
   text-decoration-color: var(--color-primary-tint-strong);
@@ -56,7 +56,7 @@
 }
 
 .prose li::marker {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   font-weight: var(--weight-bold);
 }
 
@@ -120,7 +120,7 @@
 }
 
 .warning .calloutIcon {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .calloutTitle {

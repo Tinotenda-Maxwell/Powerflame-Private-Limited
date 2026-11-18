@@ -38,7 +38,7 @@ export function CtaBand({
             </MagneticButton>
             <Button
               href={whatsappHref()}
-              variant="ghost"
+              variant="dark"
               size="lg"
               external
               icon={<MessageCircle size={18} aria-hidden="true" />}

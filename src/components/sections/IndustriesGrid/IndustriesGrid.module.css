@@ -61,7 +61,7 @@
 }
 
 .card:hover .arrow {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   transform: rotate(45deg);
 }
 

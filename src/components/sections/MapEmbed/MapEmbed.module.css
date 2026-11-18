@@ -31,7 +31,7 @@
 }
 
 .caption svg {
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
 }
 
 .link {
@@ -39,6 +39,6 @@
   align-items: center;
   min-height: var(--tap-target);
   margin-left: auto;
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   font-weight: var(--weight-semibold);
 }

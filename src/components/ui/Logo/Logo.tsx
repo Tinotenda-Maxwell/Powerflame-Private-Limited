@@ -1,48 +1,66 @@
 import { cn } from '@/lib/utils';
+import {
+  MARK_FLAME,
+  MARK_P,
+  MARK_VIEWBOX,
+  TAGLINE_RULES,
+  TAGLINE_TEXT,
+  WORD_FLAME,
+  WORD_POWER,
+  WORDMARK_HEIGHT,
+  WORDMARK_WIDTH,
+} from './paths';
 import styles from './Logo.module.css';
 
-/** SVG paths for the flame mark (also used by scripts/generate-brand-assets.mjs) */
-export const FLAME_OUTER =
-  'M20 1.5c1.2 7.4 6.8 11.4 10.3 16.6 3.1 4.6 4.2 9.3 3.2 14.1C32 40.6 26.6 46.5 20 46.5S7.6 41.4 6.6 33.6c-.8-6.2 1.8-11.4 6-15.4.4 3.6 1.9 6.3 4.3 7.9-.8-7.6.6-16.4 3.1-24.6Z';
-export const FLAME_INNER =
-  'M20.6 24.5c.6 4.2 3.9 6.4 5.1 9.8 1.4 4.1-1.4 8.7-5.7 8.7-4.4 0-7.2-3.8-6.2-8 .5-2.1 1.8-3.6 3.2-4.6.2 1.7.9 2.9 2 3.6-.3-3.3.4-6.4 1.6-9.5Z';
+/* Lockup geometry, matching public/logo.svg: mark | wordmark over tagline */
+const LOCKUP_HEIGHT = 72;
+const TEXT_X = 84;
+const WORD_Y = 18;
+const TAGLINE_Y = WORD_Y + WORDMARK_HEIGHT + 7;
+const LOCKUP_WIDTH = Math.ceil(TEXT_X + WORDMARK_WIDTH + 4);
 
 interface LogoProps {
-  /** 'full' = flame + wordmark, 'mark' = flame only */
+  /** 'full' = the complete lockup, 'mark' = the flame-P mark only */
   variant?: 'full' | 'mark';
+  /** 'dark' for light backgrounds, 'light' for dark backgrounds */
   tone?: 'dark' | 'light';
-  /** Unique id so several logos on one page have separate gradients */
-  id?: string;
   className?: string;
 }
 
-export function Logo({ variant = 'full', tone = 'dark', id = 'logo', className }: LogoProps) {
-  const gradientId = `flame-gradient-${id}`;
+export function Logo({ variant = 'full', tone = 'dark', className }: LogoProps) {
+  const mark = (
+    <>
+      <path d={MARK_FLAME} fillRule="evenodd" className={styles.orange} />
+      <path d={MARK_P} fillRule="evenodd" className={styles.navy} />
+    </>
+  );
+
   return (
     <span className={cn(styles.logo, styles[tone], className)}>
-      <svg
-        className={styles.mark}
-        viewBox="0 0 40 48"
-        width="40"
-        height="48"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <defs>
-          <linearGradient id={gradientId} x1="0" y1="1" x2="0.35" y2="0">
-            <stop offset="0%" className={styles.stopStart} />
-            <stop offset="55%" className={styles.stopMid} />
-            <stop offset="100%" className={styles.stopEnd} />
-          </linearGradient>
-        </defs>
-        <path d={FLAME_OUTER} fill={`url(#${gradientId})`} />
-        <path d={FLAME_INNER} className={styles.inner} />
-      </svg>
-      {variant === 'full' && (
-        <span className={styles.wordmark}>
-          <span className={styles.name}>Powerflame</span> <span className={styles.sub}>Energy</span>
-        </span>
+      {variant === 'mark' ? (
+        <svg className={styles.mark} viewBox={MARK_VIEWBOX} aria-hidden="true" focusable="false">
+          {mark}
+        </svg>
+      ) : (
+        <svg
+          className={styles.lockup}
+          viewBox={`0 0 ${LOCKUP_WIDTH} ${LOCKUP_HEIGHT}`}
+          aria-hidden="true"
+          focusable="false"
+        >
+          <g transform="translate(4 4) scale(1.333)">{mark}</g>
+          <rect x="66" y="14" width="2" height="44" className={styles.navy} />
+          <g transform={`translate(${TEXT_X} ${WORD_Y})`}>
+            <path d={WORD_POWER} fillRule="evenodd" className={styles.navy} />
+            <path d={WORD_FLAME} fillRule="evenodd" className={styles.orange} />
+          </g>
+          <g transform={`translate(${TEXT_X} ${TAGLINE_Y})`}>
+            <path d={TAGLINE_RULES} fillRule="evenodd" className={styles.orange} />
+            <path d={TAGLINE_TEXT} fillRule="evenodd" className={styles.navy} />
+          </g>
+        </svg>
       )}
+      <span className="sr-only">Powerflame: Eternal flame. Endless power.</span>
     </span>
   );
 }

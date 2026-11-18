@@ -79,7 +79,7 @@ export function Header() {
     <header className={cn(styles.header, scrolled && styles.scrolled, menuOpen && styles.menuOpen)}>
       <div className={styles.bar}>
         <Link href="/" className={styles.logoLink}>
-          <Logo id="header" />
+          <Logo />
         </Link>
 
         <nav aria-label="Main" className={styles.nav}>

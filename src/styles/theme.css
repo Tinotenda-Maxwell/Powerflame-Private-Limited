@@ -14,22 +14,25 @@
 
 :root {
   /* ---------------------------------------------------------------------------
-     1. BRAND PALETTE: "African sunrise"
+     1. BRAND PALETTE: taken from the Powerflame logo
      ------------------------------------------------------------------------ */
-  --color-primary: #c8102e; /* flame red */
-  --color-secondary: #f4a300; /* amber */
-  --color-dark: #3b2314; /* deep brown */
-  --color-cream: #fff8ec; /* warm cream background */
+  --color-primary: #f96d00; /* flame orange */
+  --color-secondary: #ffa53a; /* light flame amber */
+  --color-dark: #0c2d54; /* power navy */
+  --color-cream: #fff9f2; /* warm off-white background */
   --color-white: #ffffff;
 
   /* ---------------------------------------------------------------------------
      2. SEMANTIC COLOURS: use these in components, not the brand names above.
      Contrast (WCAG 2.1):
-       text on bg ............ 13.8 : 1  (AAA)
-       text-muted on bg ...... 6.3 : 1   (AA)
-       primary on bg ......... 5.5 : 1   (AA)
-       on-primary on primary . 5.9 : 1   (AA)
-       dark on secondary ..... 7.0 : 1   (AA). Never put white text on amber.
+       text on bg ............ 13.3 : 1  (AAA)
+       text-muted on bg ...... 6.8 : 1   (AA)
+       primary-ink on bg ..... 4.9 : 1   (AA)
+       on-primary on primary . 4.8 : 1   (AA)
+       dark on secondary ..... 7.5 : 1   (AA)
+     The logo orange is only ~2.8 : 1 on light backgrounds, so it is for fills,
+     icons on dark and large decoration. Use --color-primary-ink for orange text
+     on light backgrounds, and navy (never white) text on orange.
      ------------------------------------------------------------------------ */
   --color-bg: var(--color-cream);
   --color-surface: var(--color-white);
@@ -44,22 +47,23 @@
   --color-border-inverse: color-mix(in srgb, var(--color-cream) 16%, transparent);
   --color-accent: var(--color-secondary);
   --color-on-accent: var(--color-dark);
-  --color-on-primary: var(--color-white);
-  --color-focus: var(--color-primary);
+  --color-on-primary: var(--color-dark);
+  /* Darker orange that passes AA as text on cream and white */
+  --color-primary-ink: color-mix(in srgb, var(--color-primary) 72%, #000);
+  --color-focus: var(--color-primary-ink);
   --color-focus-ring: color-mix(in srgb, var(--color-secondary) 70%, transparent);
 
   /* Interaction shades */
-  --color-primary-hover: color-mix(in srgb, var(--color-primary) 86%, var(--color-dark));
-  --color-primary-active: color-mix(in srgb, var(--color-primary) 72%, var(--color-dark));
-  --color-primary-deep: color-mix(in srgb, var(--color-primary) 70%, var(--color-dark));
+  /* Orange hovers lighten towards amber so navy text keeps its contrast */
+  --color-primary-hover: color-mix(in srgb, var(--color-primary) 70%, var(--color-secondary));
+  --color-primary-active: color-mix(in srgb, var(--color-primary) 50%, var(--color-secondary));
+  /* Emphasis panels (emergency, alerts): navy text on orange only passes AA
+     on the full-strength brand orange, so this stays un-darkened */
+  --color-primary-deep: var(--color-primary);
   --color-secondary-hover: color-mix(in srgb, var(--color-secondary) 85%, var(--color-dark));
   --color-dark-hover: color-mix(in srgb, var(--color-dark) 85%, var(--color-primary));
-  /* Burnt orange between red and amber, still passes AA with white text */
-  --color-ember: color-mix(
-    in srgb,
-    color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary)) 85%,
-    var(--color-dark)
-  );
+  /* Orange between primary and amber, passes AA with navy text */
+  --color-ember: color-mix(in srgb, var(--color-primary) 55%, var(--color-secondary));
 
   /* Tints: soft backgrounds for icons, pills and badges */
   --color-primary-tint: color-mix(in srgb, var(--color-primary) 9%, var(--color-white));
@@ -89,15 +93,15 @@
     var(--color-ember) 45%,
     var(--color-secondary) 100%
   );
-  /* Text-safe gradient for the CTA band (white text passes AA throughout).
+  /* Text-safe gradient for the CTA band (navy text passes AA throughout).
      Starts and ends on the same colour so it can loop seamlessly. */
   --gradient-cta: linear-gradient(
     90deg,
-    var(--color-primary-deep) 0%,
-    var(--color-primary) 25%,
-    var(--color-ember) 50%,
-    var(--color-primary) 75%,
-    var(--color-primary-deep) 100%
+    var(--color-primary) 0%,
+    var(--color-ember) 25%,
+    var(--color-secondary) 50%,
+    var(--color-ember) 75%,
+    var(--color-primary) 100%
   );
   --gradient-glow:
     radial-gradient(
@@ -127,9 +131,9 @@
   );
   --gradient-placeholder: linear-gradient(
     145deg,
-    color-mix(in srgb, var(--color-primary) 85%, var(--color-dark)) 0%,
+    var(--color-primary) 0%,
     var(--color-ember) 55%,
-    color-mix(in srgb, var(--color-secondary) 90%, var(--color-primary)) 100%
+    var(--color-secondary) 100%
   );
   --gradient-fade-cream: linear-gradient(
     180deg,
@@ -218,7 +222,7 @@
   --radius-circle: 50%;
 
   /* ---------------------------------------------------------------------------
-     7. SHADOWS (warm, brown-tinted)
+     7. SHADOWS (navy-tinted)
      ------------------------------------------------------------------------ */
   --shadow-xs: 0 1px 2px color-mix(in srgb, var(--color-dark) 6%, transparent);
   --shadow-sm:

@@ -55,7 +55,7 @@
   height: 2rem;
   border-radius: var(--radius-circle);
   background: var(--color-primary-tint);
-  color: var(--color-primary);
+  color: var(--color-primary-ink);
   transition:
     transform var(--duration-slow) var(--ease-out),
     background-color var(--duration-base) var(--ease-out),
