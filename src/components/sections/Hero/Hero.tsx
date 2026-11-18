@@ -2,7 +2,7 @@ import { CircleCheck } from 'lucide-react';
 import { Fragment, type CSSProperties } from 'react';
 import { headerCtas } from '@/config/site';
 import { homeContent } from '@/content/home';
-import { FlameCanvas } from '@/components/animation/FlameCanvas';
+import { images } from '@/content/images';
 import { MagneticButton } from '@/components/animation/MagneticButton';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
@@ -11,7 +11,7 @@ import { VideoSlot, hasVideo } from '@/components/ui/VideoPlayer';
 import { splitWords } from '@/lib/utils';
 import styles from './Hero.module.css';
 
-/** Home page hero: word-by-word headline, canvas flame and optional background video */
+/** Home page hero: word-by-word headline beside the branded team photo, with optional background video */
 export function Hero() {
   const { hero } = homeContent;
   const before = splitWords(hero.before);
@@ -75,16 +75,18 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className={styles.stage} aria-hidden="true">
-          <span className={styles.stageGrid} />
-          <FlameCanvas originX={0.5} originY={0.78} />
-          <span className={styles.burner} />
-          <span className={styles.stageLabel}>LPG · Clean-burning flame</span>
-          <span className={`${styles.chip} ${styles.chipTop}`}>
-            <span className={styles.chipDot} />
-            Accurately weighed
-          </span>
-          <span className={`${styles.chip} ${styles.chipBottom}`}>9kg · 14kg · 19kg · 48kg</span>
+        <div className={styles.stage}>
+          <picture className={styles.person}>
+            <img
+              src={images.heroMain.src}
+              alt={images.heroMain.alt}
+              width={images.heroMain.width}
+              height={images.heroMain.height}
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
+            />
+          </picture>
         </div>
       </Container>
     </section>

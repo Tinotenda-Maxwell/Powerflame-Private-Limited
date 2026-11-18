@@ -10,11 +10,11 @@ import type { ImageSlotData } from '@/types';
  */
 export const images = {
   heroMain: {
-    src: '/images/hero/blue-gas-flame.webp',
-    alt: 'Clean blue LPG flame burning on a kitchen gas stove',
-    width: 1200,
-    height: 1400,
-    placeholderLabel: 'Blue gas flame',
+    src: '/images/hero/powerflame-team-member-cutout.webp',
+    alt: 'A smiling Powerflame team member in a navy branded polo shirt with his arms crossed',
+    width: 1312,
+    height: 1199,
+    placeholderLabel: 'Powerflame team',
   },
   aboutStory: {
     src: '/images/about/powerflame-team-harare.webp',

@@ -6,7 +6,6 @@ import { MotionProvider } from '@/components/animation/MotionProvider';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { SkipLink } from '@/components/layout/SkipLink';
-import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { graph, localBusinessJsonLd, organizationJsonLd } from '@/lib/seo';
 import { getThemeToken } from '@/lib/theme';
@@ -86,7 +85,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {children}
           </main>
           <Footer />
-          <WhatsAppButton />
         </MotionProvider>
       </body>
     </html>

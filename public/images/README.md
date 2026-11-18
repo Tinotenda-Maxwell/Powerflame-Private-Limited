@@ -21,7 +21,7 @@ Aim for **under 150 KB per image** (under 250 KB for the hero). Free tools: [Squ
 
 | Slot (in `images.ts`) | File path (inside `/public`)                               | Size (px)  | Ratio | Suggested search terms                                                        |
 | --------------------- | ---------------------------------------------------------- | ---------- | ----- | ----------------------------------------------------------------------------- |
-| `heroMain`            | `/images/hero/blue-gas-flame.webp`                         | 1200×1400  | 6:7   | "blue gas flame stove", "gas burner close up", "lit gas hob"                  |
+| `heroMain`            | `/images/hero/powerflame-team-member-cutout.webp`          | 1312×1199  | cutout | Transparent PNG cut-out of a team member (in place)                          |
 | `aboutStory`          | `/images/about/powerflame-team-harare.webp`                | 1200×900   | 4:3   | Your own team photo (recommended), or "African business team portrait"        |
 | `aboutSafety`         | `/images/about/cylinder-safety-inspection.webp`            | 1200×900   | 4:3   | "gas cylinder inspection", "technician checking valve", "LPG cylinder valve"   |
 | `safetyGuide`         | `/images/services/gas-safety-leak-test.webp`               | 1200×900   | 4:3   | "soapy water leak test", "gas regulator", "gas hose connection"                |
