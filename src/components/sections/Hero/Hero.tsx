@@ -46,6 +46,12 @@ export function Hero() {
         <span className={styles.grid} />
         <span className={`${styles.glow} ${styles.glowRed}`} />
         <span className={`${styles.glow} ${styles.glowAmber}`} />
+        {/* Glowing embers drifting up behind the photo */}
+        <span className={styles.embers}>
+          {Array.from({ length: 10 }, (_, i) => (
+            <span key={i} />
+          ))}
+        </span>
       </div>
 
       <Container size="wide" className={styles.inner}>
@@ -70,7 +76,7 @@ export function Hero() {
           <p className={styles.intro}>{hero.intro}</p>
           <div className={styles.actions}>
             <MagneticButton>
-              <Button href={headerCtas.primary.href} size="lg">
+              <Button href={headerCtas.primary.href} size="lg" className={styles.shine}>
                 {headerCtas.primary.label}
               </Button>
             </MagneticButton>

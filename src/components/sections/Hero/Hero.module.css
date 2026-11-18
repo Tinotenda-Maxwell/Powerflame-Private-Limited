@@ -127,13 +127,38 @@
   list-style: none;
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
-  animation: fade-up var(--duration-slower) var(--ease-out) 0.75s backwards;
 }
 
 .badges li {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  animation: fade-up var(--duration-slower) var(--ease-out) backwards;
+}
+
+/* Checks arrive one after another, each tick popping in */
+.badges li:nth-child(1) {
+  animation-delay: 0.85s;
+}
+
+.badges li:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.badges li:nth-child(3) {
+  animation-delay: 1.15s;
+}
+
+.badges li svg {
+  animation: check-pop 0.6s var(--ease-spring) backwards;
+  animation-delay: inherit;
+}
+
+@keyframes check-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3) rotate(-30deg);
+  }
 }
 
 .badges svg {
@@ -158,6 +183,15 @@
   align-items: flex-end;
   justify-content: center;
   pointer-events: none;
+  /* slow idle bob once he has risen into place (uses translate, so it
+     doesn't fight the rise animation on the img's transform) */
+  animation: person-float 7s var(--ease-in-out) 1.6s infinite;
+}
+
+@keyframes person-float {
+  50% {
+    translate: 0 -10px;
+  }
 }
 
 .person img {
@@ -218,5 +252,150 @@
     height: 100%;
     /* soft cloudy fade over the cropped bottom, as on phones */
     mask-image: linear-gradient(180deg, var(--color-dark) 78%, transparent 100%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Rising embers behind the photo
+   ------------------------------------------------------------------------ */
+.embers {
+  position: absolute;
+  right: 6%;
+  bottom: 12%;
+  width: 42%;
+  height: 70%;
+}
+
+.embers span {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-circle);
+  background: var(--color-secondary);
+  box-shadow:
+    0 0 8px 2px color-mix(in srgb, var(--color-primary) 70%, transparent),
+    0 0 18px 4px color-mix(in srgb, var(--color-secondary) 35%, transparent);
+  opacity: 0;
+  animation: ember-rise 8s linear infinite;
+}
+
+.embers span:nth-child(1) {
+  left: 8%;
+  animation-delay: 0s;
+  --drift: 18px;
+}
+.embers span:nth-child(2) {
+  left: 22%;
+  width: 4px;
+  height: 4px;
+  animation-delay: 1.4s;
+  animation-duration: 9s;
+  --drift: -14px;
+}
+.embers span:nth-child(3) {
+  left: 35%;
+  animation-delay: 3.1s;
+  --drift: 24px;
+}
+.embers span:nth-child(4) {
+  left: 48%;
+  width: 5px;
+  height: 5px;
+  animation-delay: 0.7s;
+  animation-duration: 10s;
+  --drift: -20px;
+}
+.embers span:nth-child(5) {
+  left: 60%;
+  width: 3px;
+  height: 3px;
+  animation-delay: 4.2s;
+  --drift: 12px;
+}
+.embers span:nth-child(6) {
+  left: 72%;
+  animation-delay: 2.3s;
+  animation-duration: 7s;
+  --drift: -26px;
+}
+.embers span:nth-child(7) {
+  left: 84%;
+  width: 4px;
+  height: 4px;
+  animation-delay: 5.6s;
+  --drift: 16px;
+}
+.embers span:nth-child(8) {
+  left: 94%;
+  width: 3px;
+  height: 3px;
+  animation-delay: 3.8s;
+  animation-duration: 9.5s;
+  --drift: -10px;
+}
+.embers span:nth-child(9) {
+  left: 15%;
+  width: 3px;
+  height: 3px;
+  animation-delay: 6.4s;
+  animation-duration: 8.5s;
+  --drift: 22px;
+}
+.embers span:nth-child(10) {
+  left: 66%;
+  width: 5px;
+  height: 5px;
+  animation-delay: 7.1s;
+  --drift: -18px;
+}
+
+@keyframes ember-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  12% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift, 16px), -420px, 0) scale(0.35);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Light sweep across the main call-to-action every few seconds
+   ------------------------------------------------------------------------ */
+.shine {
+  overflow: hidden;
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    color-mix(in srgb, var(--color-white) 55%, transparent) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: cta-shine 5s var(--ease-in-out) 2.4s infinite;
+  pointer-events: none;
+}
+
+@keyframes cta-shine {
+  0% {
+    transform: translateX(-120%);
+  }
+  35%,
+  100% {
+    transform: translateX(120%);
   }
 }
