@@ -1,0 +1,1 @@
+export { IndustriesGrid } from './IndustriesGrid';

@@ -1,0 +1,80 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    box-shadow var(--duration-slow) var(--ease-out);
+}
+
+.item:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-md);
+}
+
+.dark .item {
+  border-color: var(--color-border-inverse);
+  background: var(--color-grid-line-inverse);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.number {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+}
+
+.text {
+  color: var(--color-text-muted);
+}
+
+.dark .title {
+  color: var(--color-text-inverse);
+}
+
+.dark .text,
+.dark .number {
+  color: var(--color-text-inverse-muted);
+}
+
+@media (min-width: 640px) {
+  .cols2,
+  .cols3,
+  .cols4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cols3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cols4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

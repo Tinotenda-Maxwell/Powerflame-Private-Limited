@@ -1,0 +1,10 @@
+.magnetic {
+  display: inline-flex;
+  transition: transform var(--duration-slow) var(--ease-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .magnetic {
+    will-change: transform;
+  }
+}

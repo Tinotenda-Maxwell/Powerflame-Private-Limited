@@ -1,0 +1,157 @@
+.button {
+  --btn-bg: var(--color-primary);
+  --btn-fg: var(--color-on-primary);
+  --btn-border: transparent;
+  --btn-arrow-bg: var(--color-on-primary);
+  --btn-arrow-fg: var(--color-primary);
+  --btn-hover-bg: var(--color-primary-hover);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: var(--tap-target);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+  border: 1.5px solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  isolation: isolate;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.button:hover {
+  background: var(--btn-hover-bg);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Variants */
+.primary {
+  box-shadow: var(--shadow-glow);
+}
+
+.primary:hover {
+  box-shadow: var(--shadow-glow-strong);
+}
+
+.outline {
+  --btn-bg: var(--color-surface);
+  --btn-fg: var(--color-text);
+  --btn-border: var(--color-border-strong);
+  --btn-arrow-bg: var(--color-dark);
+  --btn-arrow-fg: var(--color-cream);
+  --btn-hover-bg: var(--color-surface);
+}
+
+.outline:hover {
+  --btn-border: var(--color-dark);
+}
+
+.dark {
+  --btn-bg: var(--color-dark);
+  --btn-fg: var(--color-cream);
+  --btn-arrow-bg: var(--color-secondary);
+  --btn-arrow-fg: var(--color-dark);
+  --btn-hover-bg: var(--color-dark-hover);
+}
+
+.light {
+  --btn-bg: var(--color-white);
+  --btn-fg: var(--color-dark);
+  --btn-arrow-bg: var(--color-primary);
+  --btn-arrow-fg: var(--color-on-primary);
+  --btn-hover-bg: var(--color-cream);
+  box-shadow: var(--shadow-md);
+}
+
+.ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-text-inverse);
+  --btn-border: var(--color-border-inverse);
+  --btn-arrow-bg: var(--color-text-inverse);
+  --btn-arrow-fg: var(--color-dark);
+  --btn-hover-bg: var(--color-border-inverse);
+}
+
+/* Sizes */
+.sm {
+  font-size: var(--text-xs);
+  padding-left: var(--space-4);
+  gap: var(--space-2);
+}
+
+.lg {
+  min-height: 3.5rem;
+  padding-left: var(--space-6);
+  font-size: var(--text-sm);
+}
+
+.button:not(:has(.arrow)) {
+  padding-inline: var(--space-6);
+}
+
+.leading {
+  display: inline-flex;
+}
+
+.label {
+  position: relative;
+}
+
+/* Circular arrow that slides out and back in on hover */
+.arrow {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: var(--radius-circle);
+  background: var(--btn-arrow-bg);
+  color: var(--btn-arrow-fg);
+}
+
+.lg .arrow {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.arrowIcon,
+.arrowIconNext {
+  grid-area: 1 / 1;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.arrowIconNext {
+  transform: translate3d(-150%, 150%, 0);
+}
+
+.button:hover .arrowIcon {
+  transform: translate3d(150%, -150%, 0);
+}
+
+.button:hover .arrowIconNext {
+  transform: translate3d(0, 0, 0);
+}

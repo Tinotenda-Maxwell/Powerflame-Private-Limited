@@ -1,0 +1,70 @@
+.button {
+  position: fixed;
+  right: max(var(--space-4), env(safe-area-inset-right));
+  bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  z-index: var(--z-floating);
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-circle);
+  background: var(--color-whatsapp-bg);
+  color: var(--color-whatsapp-fg);
+  box-shadow: var(--shadow-glow);
+  transition:
+    transform var(--duration-slow) var(--ease-spring),
+    box-shadow var(--duration-base) var(--ease-out);
+  animation: fade-up var(--duration-slower) var(--ease-out) 1s backwards;
+}
+
+.button:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-glow-strong);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid var(--color-primary);
+  animation: pulse-ring 2.4s var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+.tooltip {
+  position: absolute;
+  right: calc(100% + var(--space-3));
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-dark);
+  color: var(--color-cream);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate3d(8px, 0, 0);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.button:hover .tooltip,
+.button:focus-visible .tooltip {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+  .button {
+    right: var(--space-8);
+    bottom: var(--space-8);
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}

@@ -1,0 +1,283 @@
+/* =============================================================================
+   POWERFLAME ENERGY: DESIGN TOKENS
+   -----------------------------------------------------------------------------
+   This file is the ONLY place in /src where colour values may be written.
+   Every component reads these tokens with var(--token-name).
+
+   To re-brand the site: change the five brand colours below, save, and the
+   whole site updates. Then run `npm run brand` to regenerate the logo,
+   favicons and social share images from the same colours.
+
+   `npm run check:colors` fails the build if a colour literal appears anywhere
+   else in /src.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------------
+     1. BRAND PALETTE: "African sunrise"
+     ------------------------------------------------------------------------ */
+  --color-primary: #c8102e; /* flame red */
+  --color-secondary: #f4a300; /* amber */
+  --color-dark: #3b2314; /* deep brown */
+  --color-cream: #fff8ec; /* warm cream background */
+  --color-white: #ffffff;
+
+  /* ---------------------------------------------------------------------------
+     2. SEMANTIC COLOURS: use these in components, not the brand names above.
+     Contrast (WCAG 2.1):
+       text on bg ............ 13.8 : 1  (AAA)
+       text-muted on bg ...... 6.3 : 1   (AA)
+       primary on bg ......... 5.5 : 1   (AA)
+       on-primary on primary . 5.9 : 1   (AA)
+       dark on secondary ..... 7.0 : 1   (AA). Never put white text on amber.
+     ------------------------------------------------------------------------ */
+  --color-bg: var(--color-cream);
+  --color-surface: var(--color-white);
+  --color-surface-warm: color-mix(in srgb, var(--color-cream) 70%, var(--color-secondary) 8%);
+  --color-surface-dark: var(--color-dark);
+  --color-text: var(--color-dark);
+  --color-text-muted: color-mix(in srgb, var(--color-dark) 75%, var(--color-cream));
+  --color-text-inverse: var(--color-cream);
+  --color-text-inverse-muted: color-mix(in srgb, var(--color-cream) 78%, var(--color-dark));
+  --color-border: color-mix(in srgb, var(--color-dark) 12%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--color-dark) 24%, transparent);
+  --color-border-inverse: color-mix(in srgb, var(--color-cream) 16%, transparent);
+  --color-accent: var(--color-secondary);
+  --color-on-accent: var(--color-dark);
+  --color-on-primary: var(--color-white);
+  --color-focus: var(--color-primary);
+  --color-focus-ring: color-mix(in srgb, var(--color-secondary) 70%, transparent);
+
+  /* Interaction shades */
+  --color-primary-hover: color-mix(in srgb, var(--color-primary) 86%, var(--color-dark));
+  --color-primary-active: color-mix(in srgb, var(--color-primary) 72%, var(--color-dark));
+  --color-primary-deep: color-mix(in srgb, var(--color-primary) 70%, var(--color-dark));
+  --color-secondary-hover: color-mix(in srgb, var(--color-secondary) 85%, var(--color-dark));
+  --color-dark-hover: color-mix(in srgb, var(--color-dark) 85%, var(--color-primary));
+  /* Burnt orange between red and amber, still passes AA with white text */
+  --color-ember: color-mix(
+    in srgb,
+    color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary)) 85%,
+    var(--color-dark)
+  );
+
+  /* Tints: soft backgrounds for icons, pills and badges */
+  --color-primary-tint: color-mix(in srgb, var(--color-primary) 9%, var(--color-white));
+  --color-primary-tint-strong: color-mix(in srgb, var(--color-primary) 16%, var(--color-white));
+  --color-secondary-tint: color-mix(in srgb, var(--color-secondary) 16%, var(--color-white));
+  --color-dark-tint: color-mix(in srgb, var(--color-dark) 6%, var(--color-white));
+
+  /* Glass / overlays */
+  --color-glass: color-mix(in srgb, var(--color-white) 78%, transparent);
+  --color-glass-strong: color-mix(in srgb, var(--color-white) 92%, transparent);
+  --color-overlay-cream: color-mix(in srgb, var(--color-cream) 80%, transparent);
+  --color-overlay-dark: color-mix(in srgb, var(--color-dark) 72%, transparent);
+  --color-grid-line: color-mix(in srgb, var(--color-dark) 6%, transparent);
+  --color-grid-line-inverse: color-mix(in srgb, var(--color-cream) 7%, transparent);
+
+  /* WhatsApp button (kept on brand rather than WhatsApp green) */
+  --color-whatsapp-bg: var(--color-primary);
+  --color-whatsapp-fg: var(--color-on-primary);
+
+  /* ---------------------------------------------------------------------------
+     3. GRADIENTS
+     ------------------------------------------------------------------------ */
+  --gradient-flame: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --gradient-flame-vertical: linear-gradient(
+    0deg,
+    var(--color-primary) 0%,
+    var(--color-ember) 45%,
+    var(--color-secondary) 100%
+  );
+  /* Text-safe gradient for the CTA band (white text passes AA throughout).
+     Starts and ends on the same colour so it can loop seamlessly. */
+  --gradient-cta: linear-gradient(
+    90deg,
+    var(--color-primary-deep) 0%,
+    var(--color-primary) 25%,
+    var(--color-ember) 50%,
+    var(--color-primary) 75%,
+    var(--color-primary-deep) 100%
+  );
+  --gradient-glow:
+    radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--color-secondary) 55%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--color-primary) 40%, transparent),
+      transparent
+    );
+  --gradient-glow-red: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--color-primary) 38%, transparent),
+    transparent
+  );
+  --gradient-glow-amber: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--color-secondary) 50%, transparent),
+    transparent
+  );
+  --gradient-corner-glow: radial-gradient(
+    circle at 100% 0%,
+    color-mix(in srgb, var(--color-secondary) 24%, transparent),
+    transparent 55%
+  );
+  --gradient-placeholder: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--color-primary) 85%, var(--color-dark)) 0%,
+    var(--color-ember) 55%,
+    color-mix(in srgb, var(--color-secondary) 90%, var(--color-primary)) 100%
+  );
+  --gradient-fade-cream: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-cream) 55%, transparent) 0%,
+    color-mix(in srgb, var(--color-cream) 88%, transparent) 70%,
+    var(--color-cream) 100%
+  );
+  --gradient-dark-fade: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-dark) 82%, transparent) 100%
+  );
+
+  /* ---------------------------------------------------------------------------
+     4. TYPOGRAPHY
+     --font-dm-sans and --font-jetbrains are injected by next/font in layout.tsx
+     ------------------------------------------------------------------------ */
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Fluid type scale: clamp(min, preferred, max). 360px → 1440px viewports */
+  --text-2xs: 0.6875rem; /* 11px: tiny mono labels */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem); /* 16 → 17px */
+  --text-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem); /* 17 → 20px */
+  --text-xl: clamp(1.25rem, 1.14rem + 0.5vw, 1.5rem); /* 20 → 24px */
+  --text-2xl: clamp(1.5rem, 1.3rem + 0.9vw, 2rem); /* 24 → 32px */
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem); /* 30 → 44px */
+  --text-4xl: clamp(2.25rem, 1.7rem + 2.5vw, 3.75rem); /* 36 → 60px */
+  --text-5xl: clamp(2.5rem, 1.75rem + 3.6vw, 5rem); /* 40 → 80px: hero */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  --leading-tight: 1.04;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.035em;
+  --tracking-snug: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.18em;
+
+  --measure: 68ch; /* comfortable reading width */
+
+  /* ---------------------------------------------------------------------------
+     5. SPACING (4px base) + fluid section spacing
+     ------------------------------------------------------------------------ */
+  --space-0: 0;
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-10: 2.5rem; /* 40 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-20: 5rem; /* 80 */
+  --space-24: 6rem; /* 96 */
+
+  --space-section: clamp(4rem, 2.8rem + 5.5vw, 8rem);
+  --space-section-sm: clamp(3rem, 2.2rem + 3.5vw, 5rem);
+  --space-gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --container-max: 75rem; /* 1200px */
+  --container-wide: 87.5rem; /* 1400px */
+  --container-narrow: 48rem; /* 768px */
+  --header-height: 4.5rem;
+  --tap-target: 2.75rem; /* 44px minimum touch size */
+
+  /* ---------------------------------------------------------------------------
+     6. RADIUS
+     ------------------------------------------------------------------------ */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 2rem;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ---------------------------------------------------------------------------
+     7. SHADOWS (warm, brown-tinted)
+     ------------------------------------------------------------------------ */
+  --shadow-xs: 0 1px 2px color-mix(in srgb, var(--color-dark) 6%, transparent);
+  --shadow-sm:
+    0 1px 2px color-mix(in srgb, var(--color-dark) 5%, transparent),
+    0 4px 12px color-mix(in srgb, var(--color-dark) 6%, transparent);
+  --shadow-md:
+    0 2px 4px color-mix(in srgb, var(--color-dark) 5%, transparent),
+    0 12px 32px color-mix(in srgb, var(--color-dark) 9%, transparent);
+  --shadow-lg:
+    0 4px 8px color-mix(in srgb, var(--color-dark) 6%, transparent),
+    0 24px 60px color-mix(in srgb, var(--color-dark) 14%, transparent);
+  --shadow-glow:
+    0 8px 24px color-mix(in srgb, var(--color-primary) 32%, transparent),
+    0 2px 6px color-mix(in srgb, var(--color-primary) 24%, transparent);
+  --shadow-glow-strong:
+    0 12px 36px color-mix(in srgb, var(--color-primary) 42%, transparent),
+    0 0 0 6px color-mix(in srgb, var(--color-secondary) 18%, transparent);
+  --shadow-focus: 0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-focus);
+
+  /* ---------------------------------------------------------------------------
+     8. Z-INDEX SCALE
+     ------------------------------------------------------------------------ */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-floating: 300;
+  --z-overlay: 400;
+  --z-menu: 500;
+  --z-skip: 1000;
+
+  /* ---------------------------------------------------------------------------
+     9. MOTION
+     ------------------------------------------------------------------------ */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 450ms;
+  --duration-slower: 800ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --marquee-duration: 40s;
+  --gradient-drift-duration: 14s;
+
+  /* ---------------------------------------------------------------------------
+     10. BREAKPOINTS (reference only: CSS custom properties cannot be used
+     inside @media queries, so these values are written out in each module)
+       --bp-sm:  480px   large phones
+       --bp-md:  768px   tablets
+       --bp-lg:  1024px  small laptops (desktop nav appears)
+       --bp-xl:  1280px  desktops
+       --bp-2xl: 1536px  large screens
+     ------------------------------------------------------------------------ */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+
+  color-scheme: light;
+}

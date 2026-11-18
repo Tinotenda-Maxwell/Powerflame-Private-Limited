@@ -1,0 +1,1 @@
+export { FlameCanvas } from './FlameCanvas';

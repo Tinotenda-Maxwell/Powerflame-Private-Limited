@@ -1,0 +1,38 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  scroll-margin-top: var(--header-height);
+}
+
+.space-default {
+  padding-block: var(--space-section);
+}
+
+.space-sm {
+  padding-block: var(--space-section-sm);
+}
+
+.space-none {
+  padding-block: 0;
+}
+
+.surface {
+  background: var(--color-surface);
+}
+
+.warm {
+  background: var(--color-surface-warm);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  background-image:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 40%, var(--color-dark) 10%, transparent 75%);
+  pointer-events: none;
+}

@@ -1,0 +1,73 @@
+.section {
+  padding-block: var(--space-section-sm);
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  gap: var(--space-10);
+  align-items: center;
+  padding: clamp(1.5rem, 0.5rem + 5vw, 5rem);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-dark);
+  isolation: isolate;
+}
+
+.glow {
+  position: absolute;
+  right: -20%;
+  bottom: -50%;
+  z-index: var(--z-below);
+  width: 70%;
+  aspect-ratio: 1;
+  background: var(--gradient-glow-red);
+  filter: blur(50px);
+  opacity: 0.8;
+  animation: glow-breathe 10s var(--ease-in-out) infinite;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  background-image:
+    linear-gradient(var(--color-grid-line-inverse) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line-inverse) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(120deg, var(--color-dark), transparent 70%);
+}
+
+.copy > header {
+  margin-bottom: var(--space-6);
+}
+
+.alert {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-inverse);
+  background: var(--color-primary-deep);
+  color: var(--color-on-primary);
+  font-size: var(--text-sm);
+}
+
+.alert svg {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  color: var(--color-secondary);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}

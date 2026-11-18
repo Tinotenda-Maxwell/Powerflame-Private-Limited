@@ -1,0 +1,64 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+}
+
+.light {
+  color: var(--color-text-inverse);
+}
+
+.mark {
+  width: auto;
+  height: 2.25rem;
+  flex-shrink: 0;
+}
+
+.stopStart {
+  stop-color: var(--color-primary);
+}
+
+.stopMid {
+  stop-color: var(--color-ember);
+}
+
+.stopEnd {
+  stop-color: var(--color-secondary);
+}
+
+.inner {
+  fill: var(--color-cream);
+}
+
+.light .inner {
+  fill: var(--color-dark);
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.name {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: var(--weight-black);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.sub {
+  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.light .sub {
+  color: var(--color-secondary);
+}

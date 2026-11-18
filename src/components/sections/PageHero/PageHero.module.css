@@ -1,0 +1,81 @@
+.hero {
+  position: relative;
+  margin-top: calc(var(--header-height) * -1 - var(--space-3));
+  padding: calc(var(--header-height) + var(--space-8)) 0 var(--space-section-sm);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  background-image:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 70% 20%, var(--color-dark) 0%, transparent 70%);
+}
+
+.glow {
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  z-index: var(--z-below);
+  width: min(760px, 110vw);
+  aspect-ratio: 1;
+  background: var(--gradient-glow);
+  filter: blur(60px);
+  opacity: 0.55;
+  animation: glow-breathe 10s var(--ease-in-out) infinite;
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-10);
+  align-items: center;
+  margin-top: var(--space-6);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+  max-width: 50rem;
+}
+
+.title {
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  animation: fade-up var(--duration-slower) var(--ease-out) 0.05s backwards;
+}
+
+.highlight {
+  color: var(--color-primary);
+}
+
+.intro {
+  max-width: 42rem;
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  animation: fade-up var(--duration-slower) var(--ease-out) 0.25s backwards;
+}
+
+.aside {
+  animation: fade-up 1s var(--ease-out) 0.2s backwards;
+}
+
+@media (min-width: 1024px) {
+  .withAside {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}

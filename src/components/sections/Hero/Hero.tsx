@@ -1,0 +1,92 @@
+import { CircleCheck } from 'lucide-react';
+import { Fragment, type CSSProperties } from 'react';
+import { headerCtas } from '@/config/site';
+import { homeContent } from '@/content/home';
+import { FlameCanvas } from '@/components/animation/FlameCanvas';
+import { MagneticButton } from '@/components/animation/MagneticButton';
+import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
+import { Pill } from '@/components/ui/Pill';
+import { VideoSlot, hasVideo } from '@/components/ui/VideoPlayer';
+import { splitWords } from '@/lib/utils';
+import styles from './Hero.module.css';
+
+/** Home page hero: word-by-word headline, canvas flame and optional background video */
+export function Hero() {
+  const { hero } = homeContent;
+  const before = splitWords(hero.before);
+  const highlight = splitWords(hero.highlight);
+  const withVideo = hasVideo('hero');
+  let wordIndex = 0;
+
+  const word = (text: string, highlighted = false) => {
+    const index = wordIndex++;
+    return (
+      <Fragment key={`${text}-${index}`}>
+        <span
+          className={highlighted ? `${styles.word} ${styles.highlight}` : styles.word}
+          style={{ '--i': index } as CSSProperties}
+        >
+          {text}
+        </span>{' '}
+      </Fragment>
+    );
+  };
+
+  return (
+    <section className={styles.hero} aria-labelledby="hero-title">
+      <div className={styles.background} aria-hidden="true">
+        {withVideo && (
+          <>
+            <VideoSlot video="hero" className={styles.video} />
+            <span className={styles.videoOverlay} />
+          </>
+        )}
+        <span className={styles.grid} />
+        <span className={`${styles.glow} ${styles.glowRed}`} />
+        <span className={`${styles.glow} ${styles.glowAmber}`} />
+      </div>
+
+      <Container size="wide" className={styles.inner}>
+        <div className={styles.copy}>
+          <Pill className={styles.pill}>{hero.eyebrow}</Pill>
+          <h1 id="hero-title" className={styles.title}>
+            {before.map((w) => word(w))}
+            {highlight.map((w) => word(w, true))}
+          </h1>
+          <p className={styles.intro}>{hero.intro}</p>
+          <div className={styles.actions}>
+            <MagneticButton>
+              <Button href={headerCtas.primary.href} size="lg">
+                {headerCtas.primary.label}
+              </Button>
+            </MagneticButton>
+            <Button href={headerCtas.secondary.href} variant="outline" size="lg">
+              {headerCtas.secondary.label}
+            </Button>
+          </div>
+          <ul className={styles.badges} role="list">
+            {hero.badges.map((badge) => (
+              <li key={badge}>
+                <CircleCheck size={16} aria-hidden="true" />
+                {badge}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.stage} aria-hidden="true">
+          <span className={styles.stageGrid} />
+          <FlameCanvas originX={0.5} originY={0.78} />
+          <span className={styles.burner} />
+          <span className={styles.stageLabel}>LPG · Clean-burning flame</span>
+          <span className={`${styles.chip} ${styles.chipTop}`}>
+            <span className={styles.chipDot} />
+            Accurately weighed
+          </span>
+          <span className={`${styles.chip} ${styles.chipBottom}`}>9kg · 14kg · 19kg · 48kg</span>
+        </div>
+      </Container>
+    </section>
+  );
+}

@@ -1,0 +1,26 @@
+.top {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  margin-bottom: var(--space-10);
+}
+
+.top > header {
+  margin-bottom: 0;
+}
+
+.media {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.video {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
